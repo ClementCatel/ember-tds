@@ -25,10 +25,12 @@ let Services=EmberObject.extend({
     return this.get('promos')[this.get('codePromo')];
   }),
   montantTotal:computed('sumActive',function(){
-    let total=0;
-    total = this.get('sumActive')*(1-this.get('txReduction'));
-    return total;
-  })
+    if (this.get('checkCode'))
+      return this.get('sumActive')*(1-this.get('txReduction'));
+    else
+      return this.get('sumActive');
+  }),
+  checkCode:false
 });
 
 
