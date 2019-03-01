@@ -1,0 +1,35 @@
+<h2>Contact</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nom</th>
+      <th scope="col">Prénom</th>
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each model.datas as |contact|}}
+        <tr>
+            <td scope="col">{{contact.nom}}</td>
+            <td scope="col">{{contact.prenom}}</td>
+            <td scope="col">{{contact.email}}</td>
+            <td>
+                <button class="btn btn-secondary btn-sm">
+                    {{fa-icon "edit"}}
+                </button>
+                <button {{action "delete" contact}} class="btn btn-danger btn-sm">
+                    {{fa-icon "remove"}}
+                </button>
+            </td>
+        </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+
+{{#link-to "contacts.add" class="btn btn-primary"}}
+    Ajouter un contact...
+{{/link-to}}
+
+{{outlet}}
