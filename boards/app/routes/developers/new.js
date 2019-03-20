@@ -1,4 +1,5 @@
 import Route from '@ember/routing/route';
+import EmberObject from '@ember/object';
 
 export default Route.extend({
     model() {
@@ -7,7 +8,7 @@ export default Route.extend({
     actions:{
         save(model){
             let copy=model.copy;
-            let dev=this.setProperties.createRecord('developer', EmberObject.create(copy));
+            let dev=this.store.createRecord('developer', EmberObject.create(copy));
             dev.save();
         }
     }
